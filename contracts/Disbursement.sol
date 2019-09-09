@@ -1,5 +1,5 @@
-pragma solidity ^0.5.10;
-import { Token } from "@gnosis.pm/util-contracts/contracts/Token.sol";
+pragma solidity ^0.5.8;
+import  "@gnosis.pm/util-contracts/contracts/Token.sol";
 
 
 /// @title Disbursement contract - allows to distribute tokens over time
@@ -39,7 +39,7 @@ contract Disbursement {
     }
 
     modifier isSetUp() {
-        if (address(token) == 0)
+        if (address(token) == address(0))
             revert("Contract is not set up");
         _;
     }
@@ -55,7 +55,7 @@ contract Disbursement {
     constructor(address _receiver, address _wallet, uint _disbursementPeriod, uint _startDate)
         public
     {
-        if (_receiver == 0 || _wallet == 0 || _disbursementPeriod == 0)
+        if (_receiver == address(0) || _wallet == address(0) || _disbursementPeriod == 0)
             revert("Arguments are null");
         owner = msg.sender;
         receiver = _receiver;
@@ -73,7 +73,7 @@ contract Disbursement {
         public
         isOwner
     {
-        if (address(token) != 0 || address(_token) == 0)
+        if (address(token) != address(0) || address(_token) == address(0))
             revert("Setup was executed already or address is null");
         token = _token;
     }
@@ -100,7 +100,7 @@ contract Disbursement {
         isWallet
         isSetUp
     {
-        uint balance = token.balanceOf(this);
+        uint balance = token.balanceOf(address(this));
         withdrawnTokens += balance;
         token.transfer(wallet, balance);
     }
@@ -112,7 +112,7 @@ contract Disbursement {
         view
         returns (uint)
     {
-        uint maxTokens = (token.balanceOf(this) + withdrawnTokens) * (now - startDate) / disbursementPeriod;
+        uint maxTokens = (token.balanceOf(address(this)) + withdrawnTokens) * (now - startDate) / disbursementPeriod;
         if (withdrawnTokens >= maxTokens || startDate > now){
           return 0;
         }
