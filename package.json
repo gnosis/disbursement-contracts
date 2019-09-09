@@ -1,0 +1,23 @@
+{
+  "name": "disbursement-contracts",
+  "version": "1.0.0",
+  "description": "Ethereum Smart Contracts used for paying out grants and community efforts",
+  "main": "truffle.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "Ethereum",
+    "Smart",
+    "Contract",
+    "Disbursement",
+    "Grant",
+    "GECO"
+  ],
+  "author": "Gnosis",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "@gnosis.pm/util-contracts": "^2.0.1",
+    "truffle": "^5.0.35"
+  }
+}
