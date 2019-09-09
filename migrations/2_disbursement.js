@@ -1,7 +1,8 @@
 const Disbursement = artifacts.require('Disbursement.sol')
 const {receiver, wallet, disbursementPeriod, startDate} = require("../deploy-params.js")
 const {isAddress} = require("web3-utils")
-const fourYears = 3600*24*365*4;
+const oneYear = 3600*24*365
+const fourYears = oneYear*4
 const currentEpochInSeconds = Math.floor(new Date() / 1000)
 
 module.exports = async deployer => {
@@ -26,5 +27,10 @@ module.exports = async deployer => {
     throw Error(`startDate should be either 0 or higher than current time. Got ${startDate}`)
   }
 
+  console.log("Deploying Disbursement contract with the following configuration:")
+  console.log(`receiver : ${receiver}`)
+  console.log(`wallet: ${wallet}`)
+  console.log(`disbursementPeriod: ${disbursementPeriod} seconds | ${disbursementPeriod/oneYear} years`)
+  console.log(`startDate of distribution: ${startDate} epoch | ${new Date(startDate).toISOString()}`)
   await deployer.deploy(Disbursement, receiver, wallet, disbursementPeriod, startDate)
 }
