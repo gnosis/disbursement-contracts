@@ -19,6 +19,8 @@
   "dependencies": {
     "@gnosis.pm/util-contracts": "^2.0.1",
     "truffle": "^5.0.35",
+    "truffle-flattener": "^1.4.2",
+    "truffle-hdwallet-provider": "^1.0.17",
     "web3-utils": "^1.2.1"
   }
 }
