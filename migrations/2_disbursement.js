@@ -4,7 +4,7 @@ const {isAddress} = require("web3-utils")
 const fourYears = 3600*24*365*4;
 const currentEpochInSeconds = Math.floor(new Date() / 1000)
 
-module.exports = deployer => {
+module.exports = async deployer => {
   // Validate params
   if (!receiver || !wallet || !disbursementPeriod || startDate == undefined){
     throw Error("Fill the deployment parameters in deploy-params.js. All are required.")
@@ -26,5 +26,5 @@ module.exports = deployer => {
     throw Error(`startDate should be either 0 or higher than current time. Got ${startDate}`)
   }
 
-  deployer.deploy(Disbursement, receiver, wallet, disbursementPeriod, startDate)
+  await deployer.deploy(Disbursement, receiver, wallet, disbursementPeriod, startDate)
 }
