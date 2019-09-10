@@ -1,7 +1,7 @@
-const endDate = new Date("March 01 2020 00:00:00 UTC")
+const endDate = new Date("Jul 15 2020 00:00:00 UTC")
 
 module.exports = {
-  receiver: "0x4Da948D3dc52DC4AF3Cd2b2213ADf5DE1E1eb58A", // The person/project receiving the grant
+  receiver: "0xc9A4e9EAf73b13e5b742B8cdC66586d1Ca532abf", // The person/project receiving the grant
   wallet: "0x52DF85E9De71aa1C210873bcF37EC46d36c99dc2", // Wallet allowed to withdraw funds if critaria for the grant is not achieved
   // disbursementPeriod: 3600*24*365, // Amount of time in seconds for the disbursement
   disbursementPeriod: Math.floor(endDate/1000 - new Date()/1000),
