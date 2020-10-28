@@ -1,0 +1,64 @@
+Arguments: 
+  /home/denis/.nvm/versions/node/v13.13.0/bin/node /usr/bin/yarn
+
+PATH: 
+  /home/denis/.cargo/bin:/home/denis/.cargo/bin:/home/denis/.nvm/versions/node/v13.13.0/bin:/home/denis/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  13.13.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/run-with-testrpc%2fganache-cli: Request "https://registry.yarnpkg.com/run-with-testrpc%2fganache-cli" returned a 405
+      at Request.params.callback [as _callback] (/usr/lib/node_modules/yarn/lib/cli.js:66997:18)
+      at Request.self.callback (/usr/lib/node_modules/yarn/lib/cli.js:140749:22)
+      at Request.emit (events.js:315:20)
+      at Request.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:141721:10)
+      at Request.emit (events.js:315:20)
+      at IncomingMessage.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:141643:12)
+      at Object.onceWrapper (events.js:421:28)
+      at IncomingMessage.emit (events.js:327:22)
+      at endReadableNT (_stream_readable.js:1201:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+
+npm manifest: 
+  {
+    "name": "disbursement-contracts",
+    "version": "1.0.0",
+    "description": "Ethereum Smart Contracts used for paying out grants and community efforts",
+    "main": "truffle.js",
+    "scripts": {
+      "test": "run(){ run-with-testrpc -l 20000000 --noVMErrorsOnRPCResponse \"truffle test $@\"; }; run"
+    },
+    "keywords": [
+      "Ethereum",
+      "Smart",
+      "Contract",
+      "Disbursement",
+      "Grant",
+      "GECO"
+    ],
+    "author": "Gnosis",
+    "license": "GPL-3.0-or-later",
+    "dependencies": {
+      "@gnosis.pm/util-contracts": "^2.0.1",
+      "@openzeppelin/contracts": "2.5.1",
+      "dotenv": "^8.2.0",
+      "run-with-testrpc/ganache-cli": "6.11.0",
+      "truffle": "^5.0.35",
+      "truffle-flattener": "^1.4.2",
+      "truffle-hdwallet-provider": "^1.0.17",
+      "web3-utils": "^1.2.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

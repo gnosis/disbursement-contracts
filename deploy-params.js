@@ -1,4 +1,4 @@
-const endDate = new Date("March 01 2020 00:00:00 UTC")
+const endDate = new Date("March 01 2022 00:00:00 UTC")
 
 module.exports = {
   receiver: "0x3257Bde8CF067aE6f1DDc0E4b140fe02e3C5e44f", // The person/project receiving the grant
