@@ -1,11 +1,10 @@
 const endDate = new Date("March 01 2020 00:00:00 UTC")
 
 module.exports = {
-  receiver: "0x4Da948D3dc52DC4AF3Cd2b2213ADf5DE1E1eb58A", // The person/project receiving the grant
-  wallet: "0x52DF85E9De71aa1C210873bcF37EC46d36c99dc2", // Wallet allowed to withdraw funds if critaria for the grant is not achieved
+  receiver: "0x3257Bde8CF067aE6f1DDc0E4b140fe02e3C5e44f", // The person/project receiving the grant
+  wallet: "0x3257Bde8CF067aE6f1DDc0E4b140fe02e3C5e44f", // Wallet allowed to withdraw funds if criteria for the grant is not achieved
   // disbursementPeriod: 3600*24*365, // Amount of time in seconds for the disbursement
   disbursementPeriod: Math.floor(endDate/1000 - new Date()/1000),
   startDate: 0, // Starting time for the distribution, (cliff)
   token: "0x6810e776880c02933d47db1b9fc05908e5386b96" // Token used for payout
-  // token: "0xc778417E063141139Fce010982780140Aa0cD5Ab"
 }
