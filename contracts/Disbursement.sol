@@ -20,12 +20,6 @@ contract Disbursement {
     /*
      *  Modifiers
      */
-    modifier isOwner() {
-        if (msg.sender != owner)
-            revert("Only owner is allowed to proceed");
-        _;
-    }
-
     modifier isReceiver() {
         if (msg.sender != receiver)
             revert("Only receiver is allowed to proceed");
@@ -38,12 +32,6 @@ contract Disbursement {
         _;
     }
 
-    modifier isSetUp() {
-        if (address(token) == address(0))
-            revert("Contract is not set up");
-        _;
-    }
-
     /*
      *  Public functions
      */
@@ -52,10 +40,11 @@ contract Disbursement {
     /// @param _wallet Gnosis multisig wallet address
     /// @param _disbursementPeriod Vesting period in seconds
     /// @param _startDate Start date of disbursement period (cliff)
+    /// @param _token ERC20 token used for the vesting
     constructor(address _receiver, address _wallet, uint _disbursementPeriod, uint _startDate, Token _token)
         public
     {
-        if (_receiver == address(0) || _wallet == address(0) || _disbursementPeriod == 0)
+        if (_receiver == address(0) || _wallet == address(0) || _disbursementPeriod == 0 || address(_token) == address(0))
             revert("Arguments are null");
         owner = msg.sender;
         receiver = _receiver;
@@ -74,7 +63,6 @@ contract Disbursement {
     function withdraw(address _to, uint256 _value)
         public
         isReceiver
-        isSetUp
     {
         uint maxTokens = calcMaxWithdraw();
         if (_value > maxTokens){
@@ -88,7 +76,6 @@ contract Disbursement {
     function walletWithdraw()
         public
         isWallet
-        isSetUp
     {
         uint balance = token.balanceOf(address(this));
         withdrawnTokens += balance;

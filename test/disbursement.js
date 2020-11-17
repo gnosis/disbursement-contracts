@@ -9,7 +9,7 @@ contract('Disbursement', function(accounts) {
     const FOUR_YEARS = 4 * ONE_YEAR
     const PREASSIGNED_TOKENS = new BigNumber(10000000e18) // 10M with 18 decimals
 
-    it('Add delegates and remove first delegate', async () => {
+    it('Disbursement tests', async () => {
         const initialBlock = await web3.eth.getBlock(await (web3.eth.getBlockNumber()))
         const start_date = initialBlock.timestamp
 
