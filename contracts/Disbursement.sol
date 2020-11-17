@@ -9,7 +9,6 @@ contract Disbursement {
     /*
      *  Storage
      */
-    address public owner;
     address public receiver;
     address public wallet;
     uint public disbursementPeriod;
@@ -35,7 +34,7 @@ contract Disbursement {
     /*
      *  Public functions
      */
-    /// @dev Constructor function sets contract owner and wallet address, which is allowed to withdraw all tokens anytime
+    /// @dev Constructor function sets the wallet address, which is allowed to withdraw all tokens anytime
     /// @param _receiver Receiver of vested tokens
     /// @param _wallet Gnosis multisig wallet address
     /// @param _disbursementPeriod Vesting period in seconds
@@ -46,7 +45,6 @@ contract Disbursement {
     {
         if (_receiver == address(0) || _wallet == address(0) || _disbursementPeriod == 0 || address(_token) == address(0))
             revert("Arguments are null");
-        owner = msg.sender;
         receiver = _receiver;
         wallet = _wallet;
         disbursementPeriod = _disbursementPeriod;

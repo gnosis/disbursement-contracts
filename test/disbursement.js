@@ -30,7 +30,6 @@ contract('Disbursement', function(accounts) {
         assert.equal(await disbursement_1.token(), token.address)
         assert.equal(await disbursement_1.receiver(), accounts[1])
         assert.equal(await disbursement_1.wallet(), accounts[5])
-        assert.equal(await disbursement_1.owner(), accounts[0])
         assert.equal((await disbursement_1.disbursementPeriod()).toString(10), FOUR_YEARS.toString())
         assert.isAbove((await disbursement_1.startDate()).toNumber(), start_date-10)
         assert.isBelow((await disbursement_1.startDate()).toNumber(), start_date+10)
@@ -59,7 +58,6 @@ contract('Disbursement', function(accounts) {
         assert.isTrue(firstWithdrawBalance.lt(web3.utils.toBN(PREASSIGNED_TOKENS.div(2).plus(1e18))), firstWithdrawBalance)
 
         // Wallet withdraws remaining tokens
-        // wallet_withdraw_data = self.
         const old_balance = await token.balanceOf(accounts[5])
         const old_disbursement_balance = firstWithdrawBalance
         await disbursement_1.walletWithdraw({from: accounts[5]})
