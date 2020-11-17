@@ -13,16 +13,11 @@ contract('Disbursement', function(accounts) {
         const initialBlock = await web3.eth.getBlock(await (web3.eth.getBlockNumber()))
         const start_date = initialBlock.timestamp
 
-        // Create disbursement contracts
-        const disbursement_1 = await Disbursement.new(accounts[1], accounts[5], FOUR_YEARS, start_date, {from: accounts[0]})
-        const disbursement_2 = await Disbursement.new(accounts[2], accounts[5], FOUR_YEARS, start_date, {from: accounts[0]})
-        
         // # Create Test token
         const token = await TestToken.new({from: accounts[0]})
 
-        // Setup disbursement contracts
-        await disbursement_1.setup(token.address)
-        await disbursement_2.setup(token.address)
+        // Create disbursement contracts
+        const disbursement_1 = await Disbursement.new(accounts[1], accounts[5], FOUR_YEARS, start_date, token.address, {from: accounts[0]})
         
         
         // Send tokens to Disbursement contract

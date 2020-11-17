@@ -52,7 +52,7 @@ contract Disbursement {
     /// @param _wallet Gnosis multisig wallet address
     /// @param _disbursementPeriod Vesting period in seconds
     /// @param _startDate Start date of disbursement period (cliff)
-    constructor(address _receiver, address _wallet, uint _disbursementPeriod, uint _startDate)
+    constructor(address _receiver, address _wallet, uint _disbursementPeriod, uint _startDate, Token _token)
         public
     {
         if (_receiver == address(0) || _wallet == address(0) || _disbursementPeriod == 0)
@@ -62,20 +62,10 @@ contract Disbursement {
         wallet = _wallet;
         disbursementPeriod = _disbursementPeriod;
         startDate = _startDate;
+        token = _token;
         if (startDate == 0){
           startDate = now;
         }
-    }
-
-    /// @dev Setup function sets external contracts' addresses
-    /// @param _token Token address
-    function setup(Token _token)
-        public
-        isOwner
-    {
-        if (address(token) != address(0) || address(_token) == address(0))
-            revert("Setup was executed already or address is null");
-        token = _token;
     }
 
     /// @dev Transfers tokens to a given address
