@@ -12,16 +12,26 @@ Please update content in ./deploy-params.js
 * **token**: ethereum address for the ERC20 token contract
 
 ## Installation
-```
+```bash
 npm i
 ```
-or
-```
+
+or (recommended)
+
+```bash
 yarn
 ```
 
 ## Run
-```
+
+```bash
 npx truffle migrate
 ```
+
 For more params (different networks) check in the truffle docs: https://www.trufflesuite.com/docs/truffle/reference/truffle-commands#migrate
+
+## Verify Contract
+
+```bash
+npx truffle run verify Disbursement@ContractAddress --network $Network
+```
