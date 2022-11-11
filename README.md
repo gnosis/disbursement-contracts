@@ -11,6 +11,12 @@ Please update content in ./deploy-params.js
 * **startDate**: cliff for the disbursement, epoch time (in seconds)
 * **token**: ethereum address for the ERC20 token contract
 
+## Frameworks
+
+  - `master`: truffle
+  
+  - `hardhat`: hardhat 
+
 ## Installation
 ```bash
 npm i
